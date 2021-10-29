@@ -1,0 +1,57 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hep-script
+spec:
+  suspend: true
+  schedule: "@yearly"
+  jobTemplate:
+    spec:
+      completions: 10
+      parallelism: 10
+      completionMode: Indexed
+      template:
+        spec:
+          restartPolicy: Never
+          volumes:
+            - name: hep-cfg
+              configMap:
+                name: hep-cfg
+            - name: invenio-home
+              emptyDir: {}
+            - name: hep-script
+              configMap:
+                name: hep-script
+          containers:
+            - name: hep
+              image: inspirehep/hep
+              command: ['inspirehep']
+              args: ['shell', '/usr/local/src/script.py']
+              volumeMounts:
+                - name: hep-cfg
+                  mountPath: /usr/local/var/instance/inspirehep_api.cfg
+                  subPath: inspirehep.cfg
+                - name: hep-cfg
+                  mountPath: /usr/local/var/instance/inspirehep.cfg
+                  subPath: inspirehep.cfg
+                - name: invenio-home
+                  mountPath: /home/invenio
+                - name: hep-script
+                  mountPath: /usr/local/src/script.py
+                  subPath: script.py
+              env:
+                - name: SENTRY_ENVIRONMENT
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
+                - name: JOB_COMPLETIONS
+                  value: '10'
+              envFrom:
+                - configMapRef:
+                    name: hep-defaults
+                - configMapRef:
+                    name: hep-globals
+                - configMapRef:
+                    name: hep-feature-flags
+                - secretRef:
+                    name: hep-creds

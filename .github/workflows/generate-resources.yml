@@ -1,0 +1,24 @@
+name: generate kubernetes resources
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: update resources
+        uses: stefanprodan/kube-tools@v1
+        with:
+          kustomize: 3.9.4
+          command: |
+            ./generate-resources.sh
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        name: commit
+        with:
+          commit_message: Auto update kubernetes resources
+
