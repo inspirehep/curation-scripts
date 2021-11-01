@@ -32,7 +32,8 @@ class MyCustomAction(SearchCheckDo):
     @staticmethod
     def check(record, logger, state):
 	# Use ``record`` to check if it needs to be modified, return True if
-	# so. Optionally use ``logger`` to log additional info and ``state`` to # transmit some data to the ``do`` step.
+	# so. Optionally use ``logger`` to log additional info and ``state`` to 
+	# transmit some data to the ``do`` step.
 	...
 
     @statimethod
