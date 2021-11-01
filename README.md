@@ -12,7 +12,7 @@ Often, a task can be fit into the following pattern:
 
 1. *Search* for a set of records that need to be handled
 2. *Check* for each record whether it needs to be modified, or print some metadata from the record
-3. Do some modifications on the record passing the check
+3. *Do* some modifications on the record passing the check
 
 In those cases, one can subclass the `SearchCheckDo` class which provides logic to perform these operations. The script will have the following structure:
 
