@@ -4,7 +4,7 @@ from inspirehep.curation.search_check_do import SearchCheckDo
 class MoveJETPURLs(SearchCheckDo):
     """Move URLs pointing to JETP to new domain."""
 
-    query = 'urls.value:http://www.jetp.ac.ru*'
+    query = "urls.value:http://www.jetp.ac.ru*"
 
     @staticmethod
     def check(record, logger, state):
