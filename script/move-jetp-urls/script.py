@@ -22,5 +22,5 @@ class MoveJETPURLs(SearchCheckDo):
                     "http://www.jetp.ac.ru", "http://www.jetp.ras.ru"
                 )
 
-                
+
 MoveJETPURLs()
