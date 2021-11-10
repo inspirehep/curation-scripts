@@ -8,13 +8,19 @@ class MoveJETPURLs(SearchCheckDo):
 
     @staticmethod
     def check(record, logger, state):
-        return any(value.startswith("http://www.jetp.ac.ru") for value in record.get_value("urls.value", []))
+        return any(
+            value.startswith("http://www.jetp.ac.ru")
+            for value in record.get_value("urls.value", [])
+        )
 
-    @statimethod
+    @staticmethod
     def do(record, logger, state):
-        urls = url.get("urls", [])
+        urls = record.get("urls", [])
         for url in urls:
             if url["value"].startswith("http://www.jetp.ac.ru"):
-                url["value"] = url["value"].replace("http://www.jetp.ac.ru", "http://www.jetp.ras.ru")
+                url["value"] = url["value"].replace(
+                    "http://www.jetp.ac.ru", "http://www.jetp.ras.ru"
+                )
 
+                
 MoveJETPURLs()
