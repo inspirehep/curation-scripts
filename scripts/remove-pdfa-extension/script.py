@@ -17,7 +17,7 @@ class RemovePDFAExtension(SearchCheckDo):
         extension = ";pdfa"
         for document in record["documents"]:
             if (filename := document.get("filename", "")).endswith(extension):
-                document["filename"] = filename[:len(extension)]
+                document["filename"] = filename[: len(extension)]
 
 
 RemovePDFAExtension()
