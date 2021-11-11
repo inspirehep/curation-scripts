@@ -8,7 +8,9 @@ class RemovePDFAExtension(SearchCheckDo):
 
     @staticmethod
     def check(record, logger, state):
-        return any(f.endswith(";pdfa") for f in record.get_value("documents.filename", []))
+        return any(
+            f.endswith(";pdfa") for f in record.get_value("documents.filename", [])
+        )
 
     @staticmethod
     def do(record, logger, state):
@@ -19,4 +21,3 @@ class RemovePDFAExtension(SearchCheckDo):
 
 
 RemovePDFAExtension()
-
