@@ -49,7 +49,7 @@ class ConvertConferencePapertoArticle(SearchCheckDo):
 
         if "conference paper" in record["document_type"]:
             record["document_type"].remove("conference paper")
-        if not "article" in record["document_type"]:
+        if "article" not in record["document_type"]:
             record["document_type"].append("article")
         record["refereed"] = True
 
