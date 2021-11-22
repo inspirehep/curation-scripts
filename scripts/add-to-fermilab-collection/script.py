@@ -10,11 +10,13 @@ class AddToFermilabCollection(SearchCheckDo):
     def check(record, logger, state):
         reports = record.get_value("report_numbers.value", [])
         logger.info("Report numbers in record", reports=reports)
+        if "Fermilab" in record["_collections"]:
+            return False
         return any(report.lower.startswith("fermilab") for report in reports)
 
     @staticmethod
     def do(record, logger, state):
-        _collections.append("Fermilab")
+        record["_collections"].append("Fermilab")
 
 
 AddToFermilabCollection()
