@@ -5,7 +5,7 @@ from inspirehep.utils import flatten_list
 class SetQuantPhCore(SearchCheckDo):
     """Set all papers with quant-ph arXiv category as core."""
 
-    query = "primach quant-ph"
+    query = "arxiv_eprints.categories:quant-ph"
 
     @staticmethod
     def check(record, logger, state):
