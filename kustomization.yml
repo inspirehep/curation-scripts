@@ -6,3 +6,4 @@ resources:
 - scripts/remove-pdfa-extension
 - scripts/convert-conferencepaper-to-article
 - scripts/add-to-fermilab-collection
+- scripts/quant-ph-core
