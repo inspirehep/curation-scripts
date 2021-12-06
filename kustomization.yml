@@ -8,3 +8,4 @@ resources:
 - scripts/add-to-fermilab-collection
 - scripts/quant-ph-core
 - scripts/change_cnum
+- scripts/change-cnum
