@@ -9,4 +9,4 @@ configMapGenerator:
     files:
       - script.py
 
-nameSuffix: -change_cnum
+nameSuffix: -change-cnum
