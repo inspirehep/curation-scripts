@@ -8,3 +8,5 @@ resources:
 - scripts/add-to-fermilab-collection
 - scripts/quant-ph-core
 - scripts/change-cnum
+- scripts/replace-europhys-lett-with-epl
+- scripts/replace-europhys-lett-with-epl-in-refs
