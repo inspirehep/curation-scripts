@@ -10,3 +10,4 @@ resources:
 - scripts/change-cnum
 - scripts/replace-europhys-lett-with-epl
 - scripts/replace-europhys-lett-with-epl-in-refs
+- scripts/flag-export-to-hal
