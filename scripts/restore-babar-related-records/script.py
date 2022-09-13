@@ -77,9 +77,9 @@ class RestoreBabarRelatedRecords(SearchCheckDo):
                 )
                 continue
             description = description.replace("Related", "").strip()
-            if matched_recs[0] in seen:
+            if matched_recs[0]["$ref"] in seen:
                 continue
-            seen.add(matched_recs[0])
+            seen.add(matched_recs[0]["$ref"])
             record.setdefault("related_records", []).append(
                 {
                     "relation_freetext": description,
