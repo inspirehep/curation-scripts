@@ -13,3 +13,4 @@ resources:
 - scripts/flag-export-to-hal
 - scripts/remove-authors-uuids
 - scripts/move-jetp-letters-urls
+- scripts/restore-babar-related-records
