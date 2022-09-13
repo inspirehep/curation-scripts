@@ -61,7 +61,7 @@ class RestoreBabarRelatedRecords(SearchCheckDo):
     @staticmethod
     def do(record, logger, state):
         legacy_relations = state["legacy_relations"]
-        related_records = []
+        related_records = record.get("related_records", [])
         for description, report_number in legacy_relations:
             matched_recs = find_report_numbers(report_number)
             if not matched_recs:
@@ -84,7 +84,7 @@ class RestoreBabarRelatedRecords(SearchCheckDo):
                 }
             )
         if related_records:
-            record["related_records"].append(dedupe_list(related_records))
+            record["related_records"] = dedupe_list(related_records)
 
 
 RestoreBabarRelatedRecords()
