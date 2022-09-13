@@ -61,6 +61,7 @@ class RestoreBabarRelatedRecords(SearchCheckDo):
     @staticmethod
     def do(record, logger, state):
         legacy_relations = state["legacy_relations"]
+        seen = set()
         for description, report_number in legacy_relations:
             matched_recs = find_report_numbers(report_number)
             if not matched_recs:
@@ -76,6 +77,9 @@ class RestoreBabarRelatedRecords(SearchCheckDo):
                 )
                 continue
             description = description.replace("Related", "").strip()
+            if matched_recs[0] in seen:
+                continue
+            seen.add(matched_recs[0])
             record.setdefault("related_records", []).append(
                 {
                     "relation_freetext": description,
