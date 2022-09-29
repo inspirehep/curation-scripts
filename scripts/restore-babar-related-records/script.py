@@ -62,6 +62,7 @@ class RestoreBabarRelatedRecords(SearchCheckDo):
     def do(record, logger, state):
         legacy_relations = state["legacy_relations"]
         related_records = record.get("related_records", [])
+        urls = record.get("urls", [])
         for description, report_number in legacy_relations:
             matched_recs = find_report_numbers(report_number)
             if not matched_recs:
@@ -83,8 +84,16 @@ class RestoreBabarRelatedRecords(SearchCheckDo):
                     "curated_relation": True,
                 }
             )
+            urls.append(
+                {
+                    "value": matched_recs[0]["$ref"].replace("/api", ""),
+                    "description": report_number,
+                }
+            )
         if related_records:
             record["related_records"] = dedupe_list(related_records)
+        if urls:
+            record["urls"] = dedupe_list(urls)
 
 
 RestoreBabarRelatedRecords()
