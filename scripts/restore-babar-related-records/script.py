@@ -1,6 +1,5 @@
 import re
 
-from sqlalchemy.orm.exc import NoResultFound
 from dojson.contrib.marc21.utils import create_record
 from invenio_pidstore.models import PersistentIdentifier
 from inspire_dojson.utils import force_list
@@ -18,8 +17,10 @@ BABAR_COLLECTIONS = [
 
 
 def get_legacy_relations(recid):
-    marcxml = LegacyRecordsMirror.query.get(recid).marcxml
-    legacy_rec = create_record(marcxml)
+    record = LegacyRecordsMirror.query.get(recid)
+    if not record:
+        return None
+    legacy_rec = create_record(record.marcxml)
     legacy_relations = force_list(legacy_rec.get("78708"))
     return [
         (relation.get("i", "").strip(), relation.get("r", "").strip())
@@ -50,9 +51,8 @@ class RestoreBabarRelatedRecords(SearchCheckDo):
 
     @staticmethod
     def check(record, logger, state):
-        try:
-            state["legacy_relations"] = get_legacy_relations(record["control_number"])
-        except NoResultFound:
+        state["legacy_relations"] = get_legacy_relations(record["control_number"])
+        if not state["legacy_relations"]:
             logger.warning("No legacy record found")
             return False
 
