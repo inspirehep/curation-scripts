@@ -1,16 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - scripts/test
-  - scripts/move-jetp-urls
-  - scripts/remove-pdfa-extension
-  - scripts/convert-conferencepaper-to-article
-  - scripts/add-to-fermilab-collection
-  - scripts/quant-ph-core
-  - scripts/change-cnum
-  - scripts/replace-europhys-lett-with-epl
-  - scripts/replace-europhys-lett-with-epl-in-refs
-  - scripts/flag-export-to-hal
-  - scripts/remove-authors-uuids
-  - scripts/move-jetp-letters-urls
-  - scripts/restore-babar-related-records
+- scripts/test
+- scripts/move-jetp-urls
+- scripts/remove-pdfa-extension
+- scripts/convert-conferencepaper-to-article
+- scripts/add-to-fermilab-collection
+- scripts/quant-ph-core
+- scripts/change-cnum
+- scripts/replace-europhys-lett-with-epl
+- scripts/replace-europhys-lett-with-epl-in-refs
+- scripts/flag-export-to-hal
+- scripts/remove-authors-uuids
+- scripts/move-jetp-letters-urls
+- scripts/restore-babar-related-records
