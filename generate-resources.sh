@@ -6,3 +6,4 @@ for SCRIPTDIR in scripts/*; do
 	echo "nameSuffix: -${NAME}" >> ${SCRIPTDIR}/kustomization.yml
 done
 kustomize edit add resource scripts/*
+sed -i 's/^-/  -/' kustomization.yml
