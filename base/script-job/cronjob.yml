@@ -4,7 +4,7 @@ metadata:
   name: hep-script
 spec:
   suspend: true
-  schedule: "@yearly"
+  schedule: '@yearly'
   jobTemplate:
     spec:
       completions: 10
@@ -25,8 +25,8 @@ spec:
           containers:
             - name: hep
               image: inspirehep/hep
-              command: ["inspirehep"]
-              args: ["shell", "/usr/local/src/script.py"]
+              command: ['inspirehep']
+              args: ['shell', '/usr/local/src/script.py']
               volumeMounts:
                 - name: hep-cfg
                   mountPath: /usr/local/var/instance/inspirehep_api.cfg
@@ -65,7 +65,7 @@ spec:
                       name: postgres-inspire-pguser-hep
                       key: password
                 - name: JOB_COMPLETIONS
-                  value: "10"
+                  value: '10'
               envFrom:
                 - configMapRef:
                     name: hep-defaults
