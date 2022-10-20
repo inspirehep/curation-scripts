@@ -21,4 +21,3 @@ jobs:
         name: commit
         with:
           commit_message: Auto update kubernetes resources
-
