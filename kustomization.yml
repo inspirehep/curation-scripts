@@ -14,4 +14,4 @@ resources:
   - scripts/remove-authors-uuids
   - scripts/move-jetp-letters-urls
   - scripts/restore-babar-related-records
-  - scripts/remove-curated-relation-from-not-disambiguated-authors
+  - scripts/remove-curated-relation-from-authors
