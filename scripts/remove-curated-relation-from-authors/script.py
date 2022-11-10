@@ -46,13 +46,11 @@ class RemoveAuthorsCuratedRelation(SearchCheckDo):
 
     @staticmethod
     def check(record, logger, state):
-        no_authors_with_curated_relations = sum(
-            filter(None, get_value(record, "authors.curated_relation", []))
+        author_curated_relation_record = (
+            (author.get("curated_relation"), author.get("record"))
+            for author in record.get("authors", [])
         )
-        return (
-            len(get_value(record, "authors.record.$ref", []))
-            < no_authors_with_curated_relations
-        )
+        assert (True, None) in author_curated_relation_record
 
     @staticmethod
     def do(record, logger, state):
