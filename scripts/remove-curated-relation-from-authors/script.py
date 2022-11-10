@@ -50,7 +50,7 @@ class RemoveAuthorsCuratedRelation(SearchCheckDo):
             (author.get("curated_relation"), author.get("record"))
             for author in record.get("authors", [])
         )
-        assert (True, None) in author_curated_relation_record
+        return (True, None) in author_curated_relation_record
 
     @staticmethod
     def do(record, logger, state):
