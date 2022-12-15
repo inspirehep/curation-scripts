@@ -16,3 +16,4 @@ resources:
   - scripts/restore-babar-related-records
   - scripts/remove-curated-relation-from-authors
   - scripts/update-journal-title-for-aps-physcis
+  - scripts/fix-legacy-jobs-deadlines.py
