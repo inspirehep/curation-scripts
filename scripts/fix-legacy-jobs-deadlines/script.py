@@ -10,7 +10,7 @@ class FixLegacyJobsDeadlines(SearchCheckDo):
 
     @staticmethod
     def check(record, logger, state):
-        has_deadline_3000 = record.get("deadline_date") == 3000
+        has_deadline_3000 = record.get("deadline_date") == "3000"
         if has_deadline_3000:
             return True
         return False
