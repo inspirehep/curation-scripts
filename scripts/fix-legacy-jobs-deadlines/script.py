@@ -17,7 +17,7 @@ class FixLegacyJobsDeadlines(SearchCheckDo):
 
     @staticmethod
     def do(record, logger, state):
-        legacy_version = record.query.get("legacy_version")
+        legacy_version = record.get("legacy_version")
         if legacy_version:
             year, month, day = (
                 legacy_version[:4],
