@@ -7,6 +7,7 @@ FIXED_URLS = requests.get(
     "FVgeaG5VAVx8B09/fermilab_fixed_urls.json"
 ).json()
 
+
 class FixFermilabURLs(SearchCheckDo):
     """Rewrite URLs to Fermilab PDFs that have moved."""
 
@@ -31,4 +32,3 @@ class FixFermilabURLs(SearchCheckDo):
 
 
 FixFermilabURLs()
-
