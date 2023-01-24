@@ -18,3 +18,4 @@ resources:
   - scripts/update-journal-title-for-aps-physcis
   - scripts/fix-legacy-jobs-deadlines
   - scripts/fix-fermilab-urls
+  - scripts/remove-bai-from-lit-authors
