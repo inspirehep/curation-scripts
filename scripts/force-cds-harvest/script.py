@@ -12,9 +12,13 @@ class ForceCDSHarvest(SearchCheckDo):
 
     @staticmethod
     def check(record, logger, state):
-        return is_cds_set(record) or is_cern_arxiv_set(record) or any(
-            id_["schema"] == "CDS"
-            for id_ in record.get("external_system_identifiers", [])
+        return (
+            is_cds_set(record)
+            or is_cern_arxiv_set(record)
+            or any(
+                id_["schema"] == "CDS"
+                for id_ in record.get("external_system_identifiers", [])
+            )
         )
 
     @staticmethod
