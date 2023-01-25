@@ -15,7 +15,7 @@ class ForceCDSHarvest(SearchCheckDo):
         return (
             is_cds_set(record)
             or is_cern_arxiv_set(record)
-            or any(
+            and not any(
                 id_["schema"] == "CDS"
                 for id_ in record.get("external_system_identifiers", [])
             )
