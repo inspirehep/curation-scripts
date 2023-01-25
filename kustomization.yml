@@ -19,3 +19,4 @@ resources:
   - scripts/fix-legacy-jobs-deadlines
   - scripts/fix-fermilab-urls
   - scripts/remove-bai-from-lit-authors
+  - scripts/force-cds-harvest
