@@ -6,9 +6,12 @@ on:
 
 jobs:
   dispatch:
-    uses: peter-evans/repository-dispatch@v1
-    with:
-      token: ${{ secrets.PAT_FIRE_EVENTS_ON_CERN_SIS_KUBERNETES }}
-      repository: cern-sis/kubernetes
-      event-type: pull
-      client-payload: '{"ref": "${{ github.sha }}"}'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull curation scripts
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.PAT_FIRE_EVENTS_ON_CERN_SIS_KUBERNETES }}
+          repository: cern-sis/kubernetes
+          event-type: pull
+          client-payload: '{"ref": "${{ github.sha }}"}'
