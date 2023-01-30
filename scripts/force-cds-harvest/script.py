@@ -7,7 +7,8 @@ class ForceCDSHarvest(SearchCheckDo):
 
     query = (
         "(_oai.sets:CERN:arXiv or _oai.sets:ForCDS) "
-        "and du > 2021-06-26 and arxiv_eprints.value:* and de >= 2021"
+        "and du > 2021-06-26 and du < 2023-01-28 "
+        "and arxiv_eprints.value:* and de >= 2021"
     )
 
     @staticmethod
@@ -15,10 +16,6 @@ class ForceCDSHarvest(SearchCheckDo):
         return (
             is_cds_set(record)
             or is_cern_arxiv_set(record)
-            and not any(
-                id_["schema"] == "CDS"
-                for id_ in record.get("external_system_identifiers", [])
-            )
             and "arxiv_eprints" in record
         )
 
