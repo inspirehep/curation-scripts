@@ -13,5 +13,5 @@ jobs:
         with:
           token: ${{ secrets.PAT_FIRE_EVENTS_ON_CERN_SIS_KUBERNETES }}
           repository: cern-sis/kubernetes
-          event-type: pull
+          event-type: pull-curation-event
           client-payload: '{"ref": "${{ github.sha }}"}'
