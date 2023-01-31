@@ -1,0 +1,17 @@
+name: event-dispatch
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull curation scripts
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.PAT_FIRE_EVENTS_ON_CERN_SIS_KUBERNETES }}
+          repository: cern-sis/kubernetes
+          event-type: pull-curation-event
+          client-payload: '{"ref": "${{ github.sha }}"}'
