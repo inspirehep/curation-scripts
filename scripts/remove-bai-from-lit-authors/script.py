@@ -26,7 +26,10 @@ class RemoveAuthorsBai(SearchCheckDo):
             new_ids = [
                 id_dict for id_dict in author_ids if id_dict["schema"] != "INSPIRE BAI"
             ]
-            author["ids"] = new_ids
+            if new_ids:
+                author["ids"] = new_ids
+            else:
+                del author["ids"]
 
 
 RemoveAuthorsBai()
