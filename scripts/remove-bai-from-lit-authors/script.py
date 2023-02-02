@@ -13,10 +13,8 @@ class RemoveAuthorsBai(SearchCheckDo):
         authors_ids = get_value(record, "authors.ids", [])
         return next(
             chain.from_iterable(
-                get_values_for_schema(author_ids, "INSPIRE BAI")
-                for author_ids in authors_ids
-            ),
-            False,
+                get_values_for_schema(author_ids, "INSPIRE BAI") for author_ids in authors_ids
+            ), False
         )
 
     @staticmethod
@@ -26,7 +24,10 @@ class RemoveAuthorsBai(SearchCheckDo):
             new_ids = [
                 id_dict for id_dict in author_ids if id_dict["schema"] != "INSPIRE BAI"
             ]
-            author["ids"] = new_ids
+            if new_ids:
+                author["ids"] = new_ids
+            else:
+                del author["ids"]
 
 
 RemoveAuthorsBai()
