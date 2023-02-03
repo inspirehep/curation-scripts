@@ -20,3 +20,4 @@ resources:
   - scripts/fix-fermilab-urls
   - scripts/remove-bai-from-lit-authors
   - scripts/force-cds-harvest
+  - scripts/fix-arxiv-refs
