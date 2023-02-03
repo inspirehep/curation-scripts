@@ -8,7 +8,9 @@ class FixArxivRefs(SearchCheckDo):
 
     query = (
         "references.reference.dois:10.48550* "
-        "or references.reference.urls.value:'arxiv.org'"
+        "or references.reference.urls.value:'arxiv' "
+        "or references.reference.urls.value:'arXiv' "
+        "or references.reference.urls.value:'ARXIV'"
     )
 
     @staticmethod
