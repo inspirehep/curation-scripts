@@ -22,7 +22,9 @@ class RemoveAuthorsBai(SearchCheckDo):
     @staticmethod
     def do(record, logger, state):
         for author in record["authors"]:
-            author_ids = get_value(author, "ids", [])
+            author_ids = author.get('ids')
+            if not author_ids:
+                continue
             new_ids = [
                 id_dict for id_dict in author_ids if id_dict["schema"] != "INSPIRE BAI"
             ]
