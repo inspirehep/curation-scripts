@@ -22,7 +22,7 @@ class RemoveAuthorsBai(SearchCheckDo):
     @staticmethod
     def do(record, logger, state):
         for author in record["authors"]:
-            author_ids = author.get('ids')
+            author_ids = author.get("ids")
             if not author_ids:
                 continue
             new_ids = [
