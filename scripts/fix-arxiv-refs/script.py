@@ -21,7 +21,7 @@ class FixArxivRefs(SearchCheckDo):
 
     @staticmethod
     def do(record, logger, state):
-        for reference in record("references"):
+        for reference in record["references"]:
             reference = reference.get("reference", {})
 
             if "arxiv_eprint" in reference:
