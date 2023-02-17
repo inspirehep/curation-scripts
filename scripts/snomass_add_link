@@ -1,0 +1,31 @@
+from inspirehep.curation.search_check_do import SearchCheckDo
+
+
+class AddSnowmassProceedingsURL(SearchCheckDo):
+    '''Add link to the Snowmass eConf Proceedings website.'''
+
+    econf_url = 'https://www.slac.stanford.edu/econf/C210711/'
+    econf_description = 'eConf'
+    econf_cnum = 'C21-07-11'
+
+    query = f'publication_info.cnum:{econf_cnum}'
+    query += f' -urls.description:{econf_description}'
+
+    @staticmethod
+    def check(record, logger, state):
+        urls = record.get_value('urls.description', [])
+        logger.info('URLs in record', urls=urls)
+        if econf_description in urls:
+            return False
+        cnums = record.get_value('publication_info.cnum', [])
+        return any(cnum.upper() == econf_cnum for cnum in cnums)
+
+    @staticmethod
+    def do(record, logger, state):
+        urls = record.get('urls', [])
+        new_url = {}
+        new_url['value'] = econf_url
+        new_url['description'] = econf_description
+        urls.append(new_url)
+
+AddSnowmassProceedingsURL()
