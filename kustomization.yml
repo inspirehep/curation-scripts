@@ -21,3 +21,4 @@ resources:
   - scripts/remove-bai-from-lit-authors
   - scripts/force-cds-harvest
   - scripts/fix-arxiv-refs
+  - scripts/snowmass-add-link
