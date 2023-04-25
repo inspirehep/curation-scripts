@@ -22,4 +22,4 @@ resources:
   - scripts/force-cds-harvest
   - scripts/fix-arxiv-refs
   - scripts/snowmass-add-link
-  - scripts/amend_pbn
+  - scripts/amend-pbn

@@ -8,4 +8,4 @@ configMapGenerator:
   - name: hep-script
     files:
       - script.py
-nameSuffix: -amend_pbn
+nameSuffix: -amend-pbn
