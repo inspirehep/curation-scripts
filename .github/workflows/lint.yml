@@ -32,10 +32,16 @@ jobs:
           checkName: 'flake8' # NOTE: this needs to be the same as the job name
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: check all scripts have a script.py file
+      - name: check all scripts follow the naming convention
         run: |
           dirs_with_missing_script=$(find scripts -maxdepth 1 -mindepth 1 -type d \! -exec test -f '{}'/script.py \; -print)
+          dirs_with_wrong_name=$(find scripts -maxdepth 1 -mindepth 1 -type d -regextype egrep \! -regex 'scripts/[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*' -print)
           if [[ $dirs_with_missing_script ]]; then
             echo "::error::missing 'script.py' in ${dirs_with_missing_script//$'\n'/, }"
+          fi
+          if [[ $dirs_with_wrong_name ]]; then
+            echo "::error::incorrect script name in ${dirs_with_wrong_name//$'\n'/, } (must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character)"
+          fi
+          if [[ $dirs_with_missing_script ]] || [[ $dirs_with_wrong_name ]]; then
             exit 1
           fi
