@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 jobs:
-  flake8:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -34,7 +34,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: check all scripts have a script.py file
         run: |
-          dirs_with_missing_script=$(find scripts -maxdepth 2 -mindepth 2 -type d \! -exec test -f '{}'/script.py \; -print)
+          dirs_with_missing_script=$(find scripts -maxdepth 1 -mindepth 1 -type d \! -exec test -f '{}'/script.py \; -print)
           if [[ $dirs_with_missing_script ]]; then
             echo "setFailed:: missing 'script.py' in ${dirs_with_missing_scripts//$'\n'/ }"
           fi
