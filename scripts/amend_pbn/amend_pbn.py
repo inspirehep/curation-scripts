@@ -5,7 +5,7 @@ tag_info = ("parent_isbn", "9789811947506")
 missing_info = {
     "journal_title": "Springer Proc.Math.Stat.",
     "journal_volume": "396",
-    "parent_record": {"$ref": "https://inspirehep.net/api/literature/2628642"}
+    "parent_record": {"$ref": "https://inspirehep.net/api/literature/2628642"},
 }
 
 
@@ -32,7 +32,7 @@ class AmendPBN(SearchCheckDo):
         # append missing info
 
         for npbn in state["pos_tag"]:
-            for (key, value) in missing_info.items():
+            for key, value in missing_info.items():
                 record["publication_info"][npbn][key] = value
 
 
