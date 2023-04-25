@@ -20,7 +20,7 @@ class AmendPBN(SearchCheckDo):
 
         state["pos_tag"] = []
         for npbn, pbn in enumerate(record.get("publication_info", [])):
-            tag = pbn.get("tag_info(0)", "")
+            tag = pbn.get(tag_info(0), "")
             if tag == tag_info(1):
                 state["pos_tag"].append(npbn)
         if state["pos_tag"]:
