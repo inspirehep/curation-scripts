@@ -32,3 +32,9 @@ jobs:
           checkName: 'flake8' # NOTE: this needs to be the same as the job name
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: check all scripts have a script.py file
+        run: |
+          dirs_with_missing_script=$(find scripts -maxdepth 2 -mindepth 2 -type d \! -exec test -f '{}'/script.py \; -print)
+          if [[ $dirs_with_missing_script ]]; then
+            echo "setFailed:: missing 'script.py' in ${dirs_with_missing_scripts//$'\n'/ }"
+          fi
