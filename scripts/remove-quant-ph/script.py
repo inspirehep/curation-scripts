@@ -25,8 +25,7 @@ class RemoveQuantPh(SearchCheckDo):
             record, "_desy_bookkeeping.status", []
         )
         earliest_date_before_2023 = (
-            datetime.datetime.strptime(record.earliest_date, "%Y-%m-%d")
-            < DATE_BEFORE_2023
+            datetime.datetime.strptime(record.earliest_date, "%Y") < DATE_BEFORE_2023
         )
         return all(
             [
