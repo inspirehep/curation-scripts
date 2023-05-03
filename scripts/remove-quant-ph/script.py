@@ -1,16 +1,16 @@
 from inspirehep.curation.search_check_do import SearchCheckDo
 from inspire_utils.record import get_value
-import datetime
+from inspire_utils.date import PartialDate
 from itertools import chain
 
 
-DATE_BEFORE_2023 = datetime.datetime.strptime("2023", "%Y")
+DATE_BEFORE_2023 = PartialDate.loads("2023")
 
 
 class RemoveQuantPh(SearchCheckDo):
     """Remove core from quant-ph literature records"""
 
-    query = "arxiv_eprints.categories:quant-ph core:true not _desy_bookkeeping.status:final not _desy_bookkeeping.status:printed and de < 2023"
+    query = "arxiv_eprints.categories:quant-ph core:true not _desy_bookkeeping.status:final not _desy_bookkeeping.status:printed and de < 2023"  # noqa: E501
 
     @staticmethod
     def check(record, logger, state):
@@ -25,7 +25,7 @@ class RemoveQuantPh(SearchCheckDo):
             record, "_desy_bookkeeping.status", []
         )
         earliest_date_before_2023 = (
-            datetime.datetime.strptime(record.earliest_date, "%Y") < DATE_BEFORE_2023
+            PartialDate.loads(record.earliest_date) < DATE_BEFORE_2023
         )
         return all(
             [
