@@ -25,3 +25,4 @@ resources:
   - scripts/amend-pbn
   - scripts/remove-quant-ph
   - scripts/set-refereed
+  - scripts/reorder-babar-document-versions
