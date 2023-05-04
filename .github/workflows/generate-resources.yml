@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.INSPIRE_BOT_TOKEN }}
 
       - name: update resources
         uses: stefanprodan/kube-tools@v1
