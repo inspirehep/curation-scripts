@@ -5,7 +5,7 @@ from inspirehep.curation.search_check_do import SearchCheckDo
 
 def key_func(document):
     description = document.get("description", "")
-    match = re.match(r"\[Version (\d+(.\d+))\]", description)
+    match = re.match(r"\[Version (\d+(.\d+)?)\]", description)
     if match:
         return ("", float(match.group(1)))
     else:
