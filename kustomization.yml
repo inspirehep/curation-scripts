@@ -24,3 +24,4 @@ resources:
   - scripts/snowmass-add-link
   - scripts/amend-pbn
   - scripts/remove-quant-ph
+  - scripts/set-refereed
