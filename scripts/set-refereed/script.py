@@ -735,6 +735,17 @@ class SetRefereed(SearchCheckDo):
 
     query = {"query": {"terms": {"control_number": AFFECTED_RECORDS}}}
 
+    def search(self):
+        self.logger.info("Searching records", query=self.query)
+        query = (
+            self.search_class()
+            .from_dict(self.query)
+            .params(_source={}, size=self.size, scroll="60m")
+        )
+        if shard_filter := self._current_shard_filter():
+            query = query.filter("script", script=shard_filter)
+        return query.scan()
+
     @staticmethod
     def check(record, logger, state):
         record["control_number"] in AFFECTED_RECORDS
