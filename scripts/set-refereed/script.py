@@ -742,7 +742,9 @@ class SetRefereed(SearchCheckDo):
                 "path": "publication_info",
                 "query": {
                     "terms": {
-                        "publication_info.journal_record.$ref": list(AFFECTED_JOURNAL_RECORDS)
+                        "publication_info.journal_record.$ref": list(
+                            AFFECTED_JOURNAL_RECORDS
+                        )
                     }
                 },
             }
