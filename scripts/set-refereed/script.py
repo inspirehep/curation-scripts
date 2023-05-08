@@ -738,16 +738,16 @@ class SetRefereed(SearchCheckDo):
 
     query = {
         "query": {
-        "nested": {
-            "path": "publication_info",
-            "query": {
-                "terms": {
-                    "publication_info.journal_record.$ref": AFFECTED_JOURNAL_RECORDS
-                }
+            "nested": {
+                "path": "publication_info",
+                "query": {
+                    "terms": {
+                        "publication_info.journal_record.$ref": AFFECTED_JOURNAL_RECORDS
+                    }
+                },
             }
         }
     }
-}
 
     def search(self):
         self.logger.info("Searching records", query=self.query)
@@ -762,7 +762,7 @@ class SetRefereed(SearchCheckDo):
 
     @staticmethod
     def check(record, logger, state):
-        refs = get_value(record, 'publication_info.journal_record.$ref', [])
+        refs = get_value(record, "publication_info.journal_record.$ref", [])
         journal_recids_record = {int(get_recid_from_ref(ref)) for ref in refs}
         return AFFECTED_JOURNAL_RECORDS.intersection(journal_recids_record)
 
