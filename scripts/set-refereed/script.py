@@ -764,7 +764,7 @@ class SetRefereed(SearchCheckDo):
 
     @staticmethod
     def check(record, logger, state):
-        refs = get_value(record, "publication_info.journal_record.$ref", [])
+        refs = get_value(record, "publication_info.journal_record", [])
         journal_recids_record = {int(get_recid_from_ref(ref)) for ref in refs}
         return AFFECTED_JOURNAL_RECORDS.intersection(journal_recids_record)
 
