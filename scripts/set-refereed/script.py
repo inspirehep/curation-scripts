@@ -1,7 +1,10 @@
 from inspirehep.curation.search_check_do import SearchCheckDo
 from inspirehep.curation.utils import set_refereed_and_fix_document_type
+from inspire_dojson.utils import get_recid_from_ref
+from inspire_utils.record import get_value
 
-AFFECTED_RECORDS = [
+
+AFFECTED_JOURNAL_RECORDS = {
     1214577,
     1214658,
     1214562,
@@ -727,13 +730,24 @@ AFFECTED_RECORDS = [
     1211902,
     1212151,
     1211912,
-]
+}
 
 
 class SetRefereed(SearchCheckDo):
     """Set `refereed` and update `document_type` for selected records"""
 
-    query = {"query": {"terms": {"control_number": AFFECTED_RECORDS}}}
+    query = {
+        "query": {
+            "nested": {
+                "path": "publication_info",
+                "query": {
+                    "terms": {
+                        "publication_info.journal_record.$ref": AFFECTED_JOURNAL_RECORDS
+                    }
+                },
+            }
+        }
+    }
 
     def search(self):
         self.logger.info("Searching records", query=self.query)
@@ -748,7 +762,9 @@ class SetRefereed(SearchCheckDo):
 
     @staticmethod
     def check(record, logger, state):
-        record["control_number"] in AFFECTED_RECORDS
+        refs = get_value(record, "publication_info.journal_record.$ref", [])
+        journal_recids_record = {int(get_recid_from_ref(ref)) for ref in refs}
+        return AFFECTED_JOURNAL_RECORDS.intersection(journal_recids_record)
 
     @staticmethod
     def do(record, logger, state):
