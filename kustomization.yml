@@ -26,3 +26,4 @@ resources:
   - scripts/remove-quant-ph
   - scripts/set-refereed
   - scripts/reorder-babar-document-versions
+  - scripts/remove-cern-affiliation-cooperation-agreement
