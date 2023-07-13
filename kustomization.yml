@@ -27,3 +27,4 @@ resources:
   - scripts/set-refereed
   - scripts/reorder-babar-document-versions
   - scripts/remove-cern-affiliation-cooperation-agreement
+  - scripts/fix-linked-nonexistent-authors
