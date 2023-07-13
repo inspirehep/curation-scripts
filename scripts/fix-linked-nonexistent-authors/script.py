@@ -196,7 +196,7 @@ class FixLinkedNonexistentAuthors(SearchCheckDo):
         for author in record.get("authors", []):
             if "record" not in author:
                 continue
-            recid = get_recid_from_ref(author["record"].to_dict())
+            recid = get_recid_from_ref(author["record"])
             if int(recid) in AFFECTED_AUTHORS_RECIDS:
                 del author["record"]
 
