@@ -36,12 +36,16 @@ jobs:
         run: |
           dirs_with_missing_script=$(find scripts -maxdepth 1 -mindepth 1 -type d \! -exec test -f '{}'/script.py \; -print)
           dirs_with_wrong_name=$(find scripts -maxdepth 1 -mindepth 1 -type d -regextype egrep \! -regex 'scripts/[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*' -print)
+          dirs_with_too_many_chars=$(find scripts -maxdepth 1 -mindepth 1 -type d -regextype egrep -regex 'scripts/.{41,}' -print)
           if [[ $dirs_with_missing_script ]]; then
             echo "::error::missing 'script.py' in ${dirs_with_missing_script//$'\n'/, }"
           fi
           if [[ $dirs_with_wrong_name ]]; then
             echo "::error::incorrect script name in ${dirs_with_wrong_name//$'\n'/, } (must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character)"
           fi
-          if [[ $dirs_with_missing_script ]] || [[ $dirs_with_wrong_name ]]; then
+          if [[ $dirs_with_too_many_chars ]]; then
+            echo "::error::incorrect script name in ${dirs_with_too_many_chars//$'\n'/, } (must contain at most 41 characters)"
+          fi
+          if [[ $dirs_with_missing_script ]] || [[ $dirs_with_wrong_name ]] || [[ $dirs_with_too_many_chars ]]; then
             exit 1
           fi
