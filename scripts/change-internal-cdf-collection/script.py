@@ -8,7 +8,10 @@ class ChangeInternalCDFCollection(SearchCheckDo):
 
     @staticmethod
     def check(record, logger, state):
-        return len(record["_collections"]) > 1 and "CDF Internal Notes" in record["_collections"]
+        return (
+            len(record["_collections"]) > 1
+            and "CDF Internal Notes" in record["_collections"]
+        )
 
     @staticmethod
     def do(record, logger, state):
