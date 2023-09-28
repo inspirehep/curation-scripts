@@ -29,3 +29,4 @@ resources:
   - scripts/remove-cern-aff-cooperation-agreement
   - scripts/fix-linked-nonexistent-authors
   - scripts/change-internal-cdf-collection
+  - scripts/msnet-add-id
