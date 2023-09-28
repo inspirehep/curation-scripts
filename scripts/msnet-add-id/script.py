@@ -2,8 +2,11 @@ import requests
 
 from inspirehep.curation.search_check_do import SearchCheckDo
 
-URL = "https://cernbox.cern...msnet_add_id.txt"
-MSNET_IDS = requests.get(URL)
+URL = (
+    "https://cernbox.cern.ch/remote.php/dav/public-files/"
+    "DgV3O0I8D8haXMZ/msnet_add_id.json"
+)
+MSNET_IDS = requests.get(URL).json()
 
 ELEMENT = "external_system_identifiers"
 
@@ -15,12 +18,10 @@ class AddMsnetIds(SearchCheckDo):
 
     @staticmethod
     def check(record, logger, state):
-        if record.get_value("control_number") not in MSNET_IDS:
-            return True
-        for schema in record.get_value(f"{ELEMENT}.schema", []):
-            if schema == "MSNET":
-                return True
-        return False
+        return record["control_number"] in MSNET_IDS and not any(
+            id_["schema"] == "MSNET"
+            for id_ in record.get("external_system_identifiers", [])
+        )
 
     @staticmethod
     def do(record, logger, state):
