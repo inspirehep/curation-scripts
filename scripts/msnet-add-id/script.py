@@ -18,7 +18,7 @@ class AddMsnetIds(SearchCheckDo):
 
     @staticmethod
     def check(record, logger, state):
-        return record["control_number"] in MSNET_IDS and not any(
+        return str(record["control_number"]) in MSNET_IDS and not any(
             id_["schema"] == "MSNET"
             for id_ in record.get("external_system_identifiers", [])
         )
