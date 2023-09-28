@@ -27,7 +27,7 @@ class AddMsnetIds(SearchCheckDo):
     def do(record, logger, state):
         record.setdefault(ELEMENT, []).append(
             {
-                "value": MSNET_IDS[record.get_value("control_number")],
+                "value": MSNET_IDS[str(record["control_number"])],
                 "schema": "MSNET",
             }
         )
