@@ -7,7 +7,7 @@ RAW_AFFS = {
     "Affiliated with an international laboratory covered by a cooperation"
     " agreement with CERN",
     "Affiliated with an Institute Covered by a Cooperation Agreement with CERN,"
-    " Geneva, Switzerland"
+    " Geneva, Switzerland",
 }
 
 
