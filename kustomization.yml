@@ -30,3 +30,4 @@ resources:
   - scripts/fix-linked-nonexistent-authors
   - scripts/change-internal-cdf-collection
   - scripts/msnet-add-id
+  - scripts/remove-wrong-ipac2023-authors
