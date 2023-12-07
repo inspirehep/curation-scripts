@@ -19,9 +19,10 @@ class RemoveWrongIPAC2023Authors(SearchCheckDo):
 
     @staticmethod
     def check(record, logger, state):
-        CNUM in record.get_value("publication_info.cnum", []) and record.get_value(
-            "authors.full_name", []
-        ) == AUTHOR_LIST
+        return (
+            CNUM in record.get_value("publication_info.cnum", [])
+            and record.get_value("authors.full_name", []) == AUTHOR_LIST
+        )
 
     @staticmethod
     def do(record, logger, state):
