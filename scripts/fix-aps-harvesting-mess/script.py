@@ -25,7 +25,7 @@ class FixAPSHarvestingMess(SearchCheckDo):
     def do(record, logger, state):
         new_pubinfo = [
             p
-            for (p, i) in enumerate(record["publication_info"])
+            for (i, p) in enumerate(record["publication_info"])
             if i not in state["to_delete"]
         ]
         record["publication_info"] = new_pubinfo
