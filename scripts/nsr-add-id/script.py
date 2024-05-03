@@ -15,7 +15,7 @@ def get_unambiguous_ids(url):
     seen = set()
     result = {}
     data = requests.get(url).json()
-    for nsr_id, doi in data:
+    for nsr_id, doi in data.items():
         doi = doi.lower()
         if doi in seen:
             result.pop(doi, None)
