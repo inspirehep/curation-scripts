@@ -46,7 +46,7 @@ class AddNSRIds(SearchCheckDo):
     def do(record, logger, state):
         record.setdefault(ELEMENT, []).append(
             {
-                "value": NSR_IDS[state["nsr_id"]],
+                "value": state["nsr_id"],
                 "schema": "NSR",
             }
         )
