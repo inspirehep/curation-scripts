@@ -38,7 +38,7 @@ class AddNSRIds(SearchCheckDo):
             return False
         for doi in record.get_value("dois.value", []):
             if doi.lower() in NSR_IDS:
-                state[nsr_id] = NSR_IDS[doi.lower()]
+                state["nsr_id"] = NSR_IDS[doi.lower()]
                 return True
         return False
 
@@ -46,7 +46,7 @@ class AddNSRIds(SearchCheckDo):
     def do(record, logger, state):
         record.setdefault(ELEMENT, []).append(
             {
-                "value": NSR_IDS[state[nsr_id]],
+                "value": NSR_IDS[state["nsr_id"]],
                 "schema": "NSR",
             }
         )
