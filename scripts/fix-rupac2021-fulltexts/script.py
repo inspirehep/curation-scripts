@@ -2,6 +2,7 @@ from inspirehep.curation.search_check_do import SearchCheckDo
 
 FULLTEXT_URL = "https://jacow.org/rupac2021/papers/{}.pdf"
 
+
 class FixRupac2021Fulltexts(SearchCheckDo):
     """Fix fulltexts for RuPAC 2021 (Alushta, Crimea)."""
 
@@ -23,5 +24,5 @@ class FixRupac2021Fulltexts(SearchCheckDo):
         artid = artids[0].lower()
         record["documents"] = [{"url": FULLTEXT_URL.format(artid)}]
 
-FixRupac2021Fulltexts()
 
+FixRupac2021Fulltexts()
