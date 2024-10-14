@@ -34,3 +34,4 @@ resources:
   - scripts/fix-aps-harvesting-mess
   - scripts/nsr-add-id
   - scripts/remove-classifier-keywords
+  - scripts/fix-rupac2021-fulltexts
