@@ -24,7 +24,7 @@ spec:
                 name: hep-script
           containers:
             - name: hep
-              image: inspirehep/hep
+              image: registry.cern.ch/docker.io/inspirehep/hep
               command: ['inspirehep']
               args: ['shell', '/usr/local/src/script.py']
               volumeMounts:
@@ -45,15 +45,9 @@ spec:
                     fieldRef:
                       fieldPath: metadata.namespace
                 - name: POSTGRESQL_HOST
-                  valueFrom:
-                    secretKeyRef:
-                      name: postgres-inspire-pguser-hep
-                      key: pgbouncer-host
+                  value: "inspire-qa-db-cluster-pooler-rw.inspire-qa.svc"
                 - name: POSTGRESQL_PORT
-                  valueFrom:
-                    secretKeyRef:
-                      name: postgres-inspire-pguser-hep
-                      key: pgbouncer-port
+                  value: "5432"
                 - name: POSTGRESQL_USER
                   valueFrom:
                     secretKeyRef:
