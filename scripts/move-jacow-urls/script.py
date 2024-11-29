@@ -5,7 +5,7 @@ NEW_PREFIX = "http://accelconf.web.cern.ch/"
 
 
 class MoveJACOWURLs(SearchCheckDo):
-    """Move URLs pointing to JETP to new domain."""
+    """Fix URLs pointing to JACoW website."""
 
     query = "urls.value:http://accelconf.web.cern.ch/*"
 
