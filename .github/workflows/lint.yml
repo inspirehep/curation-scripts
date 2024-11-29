@@ -12,26 +12,18 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: setup Python
-        uses: actions/setup-python@v1
+      - uses: astral-sh/ruff-action@v1
         with:
-          python-version: '3.11'
-          architecture: x64
-      - name: black
-        uses: psf/black@stable
+          args: format
+          src: "./scripts"
+      - uses: astral-sh/ruff-action@v1
         with:
-          options: '--verbose'
-          src: './scripts'
+          args: check --fix
+          src: "./scripts"
       - uses: stefanzweifel/git-auto-commit-action@v4
         name: commit
         with:
           commit_message: Auto-format python code
-      - name: run flake8
-        uses: julianwachholz/flake8-action@v2
-        with:
-          checkName: 'flake8' # NOTE: this needs to be the same as the job name
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: check all scripts follow the naming convention
         run: |
           dirs_with_missing_script=$(find scripts -maxdepth 1 -mindepth 1 -type d \! -exec test -f '{}'/script.py \; -print)
