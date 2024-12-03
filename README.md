@@ -47,7 +47,7 @@ class MyCustomAction(SearchCheckDo):
 MyCustomAction()
 ```
 
-Concrete examples can be found [here](https://github.com/inspirehep/inspirehep/blob/master/backend/inspirehep/curation/search_check_do/examples.py).
+Concrete examples can be found [here](https://github.com/inspirehep/inspirehep/blob/master/backend/inspirehep/curation/search_check_do/examples.py) or under [scripts](/scripts/).
 
 #### Logging
 
