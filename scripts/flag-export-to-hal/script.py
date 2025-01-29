@@ -40,7 +40,7 @@ class FlagExportToHAL(SearchCheckDo):
     query = (
         'jy 2016 and (document_type:"conference paper" or document_type:"article") '
         "and not _export_to.HAL:true and _collections:Literature "
-        f'and affid:{";".join(INSTITUTIONS)} and external_system_identifiers.schema:HAL'
+        f"and affid:{';'.join(INSTITUTIONS)} and external_system_identifiers.schema:HAL"
     )
 
     @staticmethod

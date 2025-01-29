@@ -3,8 +3,7 @@ import requests
 from inspirehep.curation.search_check_do import SearchCheckDo
 
 URL = (
-    "https://cernbox.cern.ch/remote.php/dav/public-files/"
-    "yq254v51yVIdaQf/nsr-dois.json"
+    "https://cernbox.cern.ch/remote.php/dav/public-files/yq254v51yVIdaQf/nsr-dois.json"
 )
 
 ELEMENT = "external_system_identifiers"
