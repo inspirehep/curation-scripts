@@ -1,0 +1,82 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  labels:
+    app.kubernetes.io/component: job
+  name: hep-script-change-cnum
+spec:
+  jobTemplate:
+    metadata:
+      labels:
+        app.kubernetes.io/component: job
+    spec:
+      completionMode: Indexed
+      completions: 10
+      parallelism: 10
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/component: job
+        spec:
+          containers:
+          - args:
+            - shell
+            - /usr/local/src/script.py
+            command:
+            - inspirehep
+            env:
+            - name: SENTRY_ENVIRONMENT
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POSTGRESQL_HOST
+              value: inspire-qa-db-cluster-pooler-rw.inspire-qa.svc
+            - name: POSTGRESQL_PORT
+              value: "5432"
+            - name: POSTGRESQL_USER
+              valueFrom:
+                secretKeyRef:
+                  key: user
+                  name: postgres-inspire-pguser-hep
+            - name: POSTGRESQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: postgres-inspire-pguser-hep
+            - name: JOB_COMPLETIONS
+              value: "10"
+            envFrom:
+            - configMapRef:
+                name: hep-defaults
+            - configMapRef:
+                name: hep-globals
+            - configMapRef:
+                name: hep-feature-flags
+            - secretRef:
+                name: hep-creds
+            image: registry.cern.ch/docker.io/inspirehep/hep
+            name: hep
+            volumeMounts:
+            - mountPath: /usr/local/var/instance/inspirehep_api.cfg
+              name: hep-cfg
+              subPath: inspirehep.cfg
+            - mountPath: /usr/local/var/instance/inspirehep.cfg
+              name: hep-cfg
+              subPath: inspirehep.cfg
+            - mountPath: /home/invenio
+              name: invenio-home
+            - mountPath: /usr/local/src/script.py
+              name: hep-script
+              subPath: script.py
+          restartPolicy: Never
+          volumes:
+          - configMap:
+              name: hep-cfg
+            name: hep-cfg
+          - emptyDir: {}
+            name: invenio-home
+          - configMap:
+              name: hep-script-change-cnum-th6km57527
+            name: hep-script
+  schedule: '@yearly'
+  suspend: true
