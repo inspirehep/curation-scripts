@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  script.py: |
+    print("Everything works fine!")
+kind: ConfigMap
+metadata:
+  name: hep-script-test-5c66cgkk94
