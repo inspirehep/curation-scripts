@@ -36,3 +36,4 @@ resources:
   - scripts/remove-classifier-keywords
   - scripts/fix-rupac2021-fulltexts
   - scripts/move-jacow-urls
+  - scripts/cleanup-and-move-rors
