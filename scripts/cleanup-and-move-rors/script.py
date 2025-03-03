@@ -12,7 +12,7 @@ class CleanupAndMoveRORs(SearchCheckDo):
     def check(record, logger, state):
         ror_pattern = re.compile(r"https:\/\/ror\.org\/0\w{6}\d{2}")
         affiliations = chain.from_iterable(
-            record.get_value("metadata.authors.raw_affiliations.value")
+            record.get_value("authors.raw_affiliations.value") or []
         )
         return any(ror_pattern.search(val) for val in affiliations)
 
