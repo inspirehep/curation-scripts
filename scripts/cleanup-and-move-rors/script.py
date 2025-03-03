@@ -24,7 +24,7 @@ class CleanupAndMoveRORs(SearchCheckDo):
                 ror = ror_pattern.search(affiliation["value"])
                 if ror:
                     author.setdefault("affiliations_identifiers", []).append(
-                        {"schema": "ROR", "value": ror}
+                        {"schema": "ROR", "value": ror.group(0)}
                     )
                     affiliation["value"] = re.sub(ror_pattern, "", affiliation["value"])
 
