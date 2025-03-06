@@ -27,10 +27,11 @@ class CleanupAndMoveRORs(SearchCheckDo):
                         {"schema": "ROR", "value": ror.group(0)}
                     )
                     affiliation["value"] = re.sub(ror_pattern, "", affiliation["value"])
-            author["affiliations_identifiers"] = [
-                dict(t)
-                for t in {tuple(d.items()) for d in author["affiliations_identifiers"]}
-            ]
+            if author.get("affiliations_identifiers"):
+                author["affiliations_identifiers"] = [
+                    dict(t)
+                    for t in {tuple(d.items()) for d in author["affiliations_identifiers"]}
+                ]
 
 
 CleanupAndMoveRORs()
