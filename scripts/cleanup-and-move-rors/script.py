@@ -31,7 +31,7 @@ class CleanupAndMoveRORs(SearchCheckDo):
                 author["affiliations_identifiers"] = [
                     dict(t)
                     for t in {
-                        tuple(d.items()) for d in author["affiliations_identifiers"]
+                        tuple(sorted(d.items())) for d in author["affiliations_identifiers"]
                     }
                 ]
 
