@@ -29,9 +29,7 @@ class CleanupAndMoveRORs(SearchCheckDo):
                     affiliation["value"] = re.sub(ror_pattern, "", affiliation["value"])
             author["affiliations_identifiers"] = [
                 dict(t)
-                for t in {
-                    tuple(d.items()) for d in author["affiliations_identifiers"]
-                }
+                for t in {tuple(d.items()) for d in author["affiliations_identifiers"]}
             ]
 
 
