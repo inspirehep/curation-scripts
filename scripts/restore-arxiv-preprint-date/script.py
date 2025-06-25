@@ -5,11 +5,14 @@ from inspirehep.curation.search_check_do import SearchCheckDo
 class RestoreArxivPreprintDate(SearchCheckDo):
     """Restore the correct preprint_date which got overwritten due to an arXiv OAI-PMH bug."""
 
-    query = 'da < 2025-06-16 and arxiv_eprints.value:* and preprint_date:2025-06-16->2025-07-01'
+    query = "da < 2025-06-16 and arxiv_eprints.value:* and preprint_date:2025-06-16->2025-07-01"
 
     @staticmethod
     def check(record, logger, state):
-       return record.created < datetime(2025, 6, 16, 8) and record.get("preprint_date", "0") >= "2025-06-16"
+        return (
+            record.created < datetime(2025, 6, 16, 8)
+            and record.get("preprint_date", "0") >= "2025-06-16"
+        )
 
     @staticmethod
     def do(record, logger, state):
@@ -23,4 +26,3 @@ class RestoreArxivPreprintDate(SearchCheckDo):
 
 
 RestoreArxivPreprintDate()
-
