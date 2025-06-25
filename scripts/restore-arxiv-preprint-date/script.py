@@ -17,7 +17,7 @@ class RestoreArxivPreprintDate(SearchCheckDo):
     @staticmethod
     def do(record, logger, state):
         current_preprint_date = record["preprint_date"]
-        for revision_id in range(2, record.revision_id):
+        for revision_id in range(2, record.revision_id + 2):
             preprint_date = record.revisions[-revision_id].get("preprint_date")
             if preprint_date and preprint_date != current_preprint_date:
                 record["preprint_date"] = preprint_date
