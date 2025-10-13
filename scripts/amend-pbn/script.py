@@ -1,4 +1,4 @@
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 
 tag_info = ("parent_isbn", "9789811947506")
 

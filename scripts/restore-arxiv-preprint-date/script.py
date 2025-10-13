@@ -1,5 +1,5 @@
 from datetime import datetime
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 
 
 class RestoreArxivPreprintDate(SearchCheckDo):

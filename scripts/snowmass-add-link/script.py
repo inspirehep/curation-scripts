@@ -1,4 +1,4 @@
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 
 ECONF_URL = "https://www.slac.stanford.edu/econf/C210711/"
 ECONF_DESCRIPTION = "eConf"

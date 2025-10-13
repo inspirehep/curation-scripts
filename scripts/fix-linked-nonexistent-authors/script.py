@@ -1,4 +1,4 @@
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 from inspire_dojson.utils import get_recid_from_ref
 from inspire_utils.record import get_value
 

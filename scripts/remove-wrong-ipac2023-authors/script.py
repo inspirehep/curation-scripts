@@ -1,4 +1,4 @@
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 
 CNUM = "C23-05-07"
 AUTHOR_LIST = [

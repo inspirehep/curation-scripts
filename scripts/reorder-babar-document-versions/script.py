@@ -1,6 +1,6 @@
 import re
 
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 
 
 def key_func(document):

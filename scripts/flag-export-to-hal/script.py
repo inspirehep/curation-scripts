@@ -1,6 +1,6 @@
 from itertools import chain
 
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 
 INSTITUTIONS = {
     "2020952",

@@ -1,4 +1,4 @@
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 
 OLD_PREFIX = "http://www.jetpletters.ac.ru"
 NEW_PREFIX = "http://jetpletters.ru"

@@ -17,7 +17,7 @@ Often, a task can be fit into the following pattern:
 In those cases, one can subclass the `SearchCheckDo` class which provides logic to perform these operations. The script will have the following structure:
 
 ```python
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 
 
 class MyCustomAction(SearchCheckDo):
@@ -47,7 +47,7 @@ class MyCustomAction(SearchCheckDo):
 MyCustomAction()
 ```
 
-Concrete examples can be found [here](https://github.com/inspirehep/inspirehep/blob/master/backend/inspirehep/curation/search_check_do/examples.py) or under [scripts](/scripts/).
+Concrete examples can be found [here](https://github.com/inspirehep/inspirehep/blob/master/backend/inspirehep/curation/search_check_do.base/examples.py) or under [scripts](/scripts/).
 
 #### Logging
 

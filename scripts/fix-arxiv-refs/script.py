@@ -1,5 +1,5 @@
 from itertools import chain
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 from inspire_schemas.utils import is_arxiv, normalize_arxiv
 
 

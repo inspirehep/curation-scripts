@@ -1,6 +1,6 @@
 from itertools import chain
 from inspire_utils.record import get_value, get_values_for_schema
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 
 
 class RemoveAuthorsBai(SearchCheckDo):

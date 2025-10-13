@@ -4,7 +4,7 @@ from dojson.contrib.marc21.utils import create_record
 from invenio_pidstore.models import PersistentIdentifier
 from inspire_dojson.utils import force_list
 from inspire_utils.dedupers import dedupe_list
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 from inspirehep.migrator.models import LegacyRecordsMirror
 from inspirehep.records.utils import get_ref_from_pid
 from inspirehep.search.api import LiteratureSearch, IQ

@@ -1,4 +1,4 @@
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 from inspirehep.oai.utils import is_cds_set, is_cern_arxiv_set
 
 

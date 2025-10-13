@@ -1,5 +1,5 @@
 from inspire_utils.record import get_value
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 
 
 class ReplaceEurophLetterWithEPL(SearchCheckDo):

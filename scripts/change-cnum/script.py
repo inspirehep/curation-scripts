@@ -1,4 +1,4 @@
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 
 wrong_cnum = "C20-05-18.1"
 new_cnum = "C21-05-31"

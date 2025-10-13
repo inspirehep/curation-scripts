@@ -1,6 +1,6 @@
 from inspire_utils.record import get_value
 from inspire_utils.dedupers import dedupe_list
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 
 RAW_AFFS = {
     "Affiliated with an institute covered by a cooperation agreement with CERN",

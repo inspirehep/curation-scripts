@@ -1,4 +1,4 @@
-from inspirehep.curation.search_check_do import SearchCheckDo
+from inspirehep.curation.search_check_do.base import SearchCheckDo
 from inspire_utils.record import get_value
 from inspire_utils.date import PartialDate
 from itertools import chain
