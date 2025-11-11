@@ -1,5 +1,5 @@
 from inspirehep.curation.search_check_do.base import SearchCheckDo
-from inspirehep.utils import flatten_list
+from inspire_utils.helpers import flatten_list
 
 
 class SetQuantPhCore(SearchCheckDo):
