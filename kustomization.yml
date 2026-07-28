@@ -5,6 +5,7 @@ resources:
   - scripts/move-jetp-urls
   - scripts/remove-pdfa-extension
   - scripts/convert-conferencepaper-to-article
+  - scripts/add-ror-ids
   - scripts/add-to-fermilab-collection
   - scripts/quant-ph-core
   - scripts/change-cnum
