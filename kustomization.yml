@@ -6,6 +6,7 @@ resources:
   - scripts/remove-pdfa-extension
   - scripts/convert-conferencepaper-to-article
   - scripts/add-to-fermilab-collection
+  - scripts/set-institution-parents
   - scripts/quant-ph-core
   - scripts/change-cnum
   - scripts/replace-europhys-lett-with-epl
